@@ -1,0 +1,1572 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "4.44.2",
+  "hash": "5917b6e75fa0ba27540e",
+  "time": 5588,
+  "builtAt": 1676211046541,
+  "publicPath": "",
+  "outputPath": "D:\\host\\MySPFx\\CustomNavigation\\dist",
+  "assetsByChunkName": {
+    "top-navigation-application-customizer": [
+      "top-navigation-application-customizer.js",
+      "top-navigation-application-customizer.js.map"
+    ]
+  },
+  "assets": [
+    {
+      "name": "TopNavigationApplicationCustomizerStrings_en-us.js",
+      "size": 92,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": true
+    },
+    {
+      "name": "f5bfd512-8eac-40de-aa7b-555980660517.manifest.json",
+      "size": 1213,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": true
+    },
+    {
+      "name": "top-navigation-application-customizer.js",
+      "size": 30964,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "chunkNames": [
+        "top-navigation-application-customizer"
+      ],
+      "info": {},
+      "emitted": true
+    },
+    {
+      "name": "top-navigation-application-customizer.js.map",
+      "size": 30040,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "chunkNames": [
+        "top-navigation-application-customizer"
+      ],
+      "info": {
+        "development": true
+      },
+      "emitted": true
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "top-navigation-application-customizer": {
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "assets": [
+        "top-navigation-application-customizer.js",
+        "top-navigation-application-customizer.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "top-navigation-application-customizer": {
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "assets": [
+        "top-navigation-application-customizer.js",
+        "top-navigation-application-customizer.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "chunks": [
+    {
+      "id": "top-navigation-application-customizer",
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 19942,
+      "names": [
+        "top-navigation-application-customizer"
+      ],
+      "files": [
+        "top-navigation-application-customizer.js",
+        "top-navigation-application-customizer.js.map"
+      ],
+      "hash": "21c91461144deb9045e3",
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "childrenByOrder": {},
+      "modules": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "index": 0,
+          "index2": 12,
+          "size": 2915,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "loc": "top-navigation-application-customizer"
+            }
+          ],
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [],
+          "depth": 0,
+          "source": "var __extends = (this && this.__extends) || (function () {\r\n    var extendStatics = function (d, b) {\r\n        extendStatics = Object.setPrototypeOf ||\r\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\r\n            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };\r\n        return extendStatics(d, b);\r\n    };\r\n    return function (d, b) {\r\n        extendStatics(d, b);\r\n        function __() { this.constructor = d; }\r\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\r\n    };\r\n})();\r\nimport { Log } from '@microsoft/sp-core-library';\r\nimport { BaseApplicationCustomizer, PlaceholderName } from '@microsoft/sp-application-base';\r\nimport { Services } from '../services';\r\nimport * as strings from 'TopNavigationApplicationCustomizerStrings';\r\nimport styles from './TopNavigationApplicationCustomizer.module.scss';\r\nvar LOG_SOURCE = 'TopNavigationApplicationCustomizer';\r\n/** A Custom Action which can be run during execution of a Client Side Application */\r\nvar TopNavigationApplicationCustomizer = /** @class */ (function (_super) {\r\n    __extends(TopNavigationApplicationCustomizer, _super);\r\n    function TopNavigationApplicationCustomizer() {\r\n        return _super !== null && _super.apply(this, arguments) || this;\r\n    }\r\n    TopNavigationApplicationCustomizer.prototype.onInit = function () {\r\n        var _this = this;\r\n        Log.info(LOG_SOURCE, \"Initialized \" + strings.Title);\r\n        //this._renderPlaceholder();\r\n        this.services = new Services(this.context.pageContext.web.absoluteUrl, this.context.spHttpClient);\r\n        this.services.getMenu().then(function (menu) {\r\n            console.log(menu);\r\n            _this._renderPlaceholder(menu);\r\n        });\r\n        return Promise.resolve();\r\n    };\r\n    TopNavigationApplicationCustomizer.prototype._onDispose = function () { };\r\n    TopNavigationApplicationCustomizer.prototype._renderPlaceholder = function (mItems) {\r\n        if (!this._topPlaceholder) {\r\n            this._topPlaceholder = this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top, { onDispose: this._onDispose });\r\n        }\r\n        if (!this._topPlaceholder) {\r\n            console.log('Placeholder top wasn\\'t found');\r\n            return;\r\n        }\r\n        var topMenuUl = \"<ul class='\" + styles.app + \"'>\";\r\n        var topMenuLis = '';\r\n        mItems.map(function (item, key) {\r\n            topMenuLis += \"<li id='\" + key + \"'><a href='\" + item.Url + \"'> \" + item.Title + \" </a></li>\";\r\n        });\r\n        var completedNav = topMenuUl + topMenuLis + '</ul>';\r\n        if (this._topPlaceholder.domElement) {\r\n            this._topPlaceholder.domElement.innerHTML = completedNav;\r\n        }\r\n    };\r\n    return TopNavigationApplicationCustomizer;\r\n}(BaseApplicationCustomizer));\r\nexport default TopNavigationApplicationCustomizer;\r\n"
+        },
+        {
+          "id": "2W52",
+          "identifier": "external \"TopNavigationApplicationCustomizerStrings\"",
+          "name": "external \"TopNavigationApplicationCustomizerStrings\"",
+          "index": 6,
+          "index2": 5,
+          "size": 42,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "issuerId": "2S9X",
+          "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "TopNavigationApplicationCustomizerStrings",
+              "loc": "17:0-69"
+            },
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony import specifier",
+              "userRequest": "TopNavigationApplicationCustomizerStrings",
+              "loc": "28:46-59"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 1
+        },
+        {
+          "id": "4ujg",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+          "name": "./lib/extensions/services/Services.js",
+          "index": 4,
+          "index2": 3,
+          "size": 1138,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+          "issuerId": "TrAW",
+          "issuerName": "./lib/extensions/services/index.js",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            },
+            {
+              "id": "TrAW",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+              "name": "./lib/extensions/services/index.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "TrAW",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+              "module": "./lib/extensions/services/index.js",
+              "moduleName": "./lib/extensions/services/index.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "./Services",
+              "loc": "1:0-27"
+            },
+            {
+              "moduleId": "TrAW",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+              "module": "./lib/extensions/services/index.js",
+              "moduleName": "./lib/extensions/services/index.js",
+              "type": "harmony export imported specifier",
+              "userRequest": "./Services",
+              "loc": "1:0-27"
+            }
+          ],
+          "providedExports": [
+            "Services"
+          ],
+          "optimizationBailout": [],
+          "depth": 2,
+          "source": "import { SPHttpClient } from '@microsoft/sp-http';\r\nvar QUERY = \"Navigation/QuickLaunch?$expand=children\";\r\nvar API_ENDPOINT = \"/_api/web/\";\r\nvar Services = /** @class */ (function () {\r\n    function Services(absoluteUrl, client) {\r\n        this.absoluteUrl = absoluteUrl;\r\n        this.client = client;\r\n        this._spHttpOptions = {\r\n            getNoMetaData: {\r\n                headers: { 'ACCEPT': 'application/json; odata.metadata=none' }\r\n            }\r\n        };\r\n    }\r\n    Services.prototype.getMenu = function () {\r\n        var _this = this;\r\n        var promise = new Promise(function (resolve, reject) {\r\n            var query = \"\" + _this.absoluteUrl + API_ENDPOINT + QUERY;\r\n            _this.client.get(query, SPHttpClient.configurations.v1, _this._spHttpOptions.getNoMetaData).then(function (response) {\r\n                return response.json();\r\n            }).then(function (response) {\r\n                resolve(response.value);\r\n            }).catch(function (error) {\r\n                reject(error);\r\n            });\r\n        });\r\n        return promise;\r\n    };\r\n    return Services;\r\n}());\r\nexport { Services };\r\n"
+        },
+        {
+          "id": "GPet",
+          "identifier": "external \"@microsoft/sp-application-base\"",
+          "name": "external \"@microsoft/sp-application-base\"",
+          "index": 2,
+          "index2": 1,
+          "size": 42,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "issuerId": "2S9X",
+          "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "@microsoft/sp-application-base",
+              "loc": "15:0-92"
+            },
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony import specifier",
+              "userRequest": "@microsoft/sp-application-base",
+              "loc": "40:85-100"
+            },
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony import specifier",
+              "userRequest": "@microsoft/sp-application-base",
+              "loc": "57:2-27"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 1
+        },
+        {
+          "id": "JPst",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\runtime\\api.js",
+          "name": "./node_modules/css-loader/dist/runtime/api.js",
+          "index": 10,
+          "index2": 6,
+          "size": 2677,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "issuerId": "LS73",
+          "issuerName": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            },
+            {
+              "id": "klam",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+            },
+            {
+              "id": "Kn1V",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+            },
+            {
+              "id": "LS73",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+              "name": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "LS73",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+              "module": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+              "moduleName": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+              "type": "cjs require",
+              "userRequest": "../../../node_modules/css-loader/dist/runtime/api.js",
+              "loc": "1:27-90"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 4,
+          "source": "\"use strict\";\n\n/*\n  MIT License http://www.opensource.org/licenses/mit-license.php\n  Author Tobias Koppers @sokra\n*/\n// css base code, injected by the css-loader\n// eslint-disable-next-line func-names\nmodule.exports = function (useSourceMap) {\n  var list = []; // return the list of modules as css string\n\n  list.toString = function toString() {\n    return this.map(function (item) {\n      var content = cssWithMappingToString(item, useSourceMap);\n\n      if (item[2]) {\n        return \"@media \".concat(item[2], \"{\").concat(content, \"}\");\n      }\n\n      return content;\n    }).join('');\n  }; // import a list of modules into the list\n  // eslint-disable-next-line func-names\n\n\n  list.i = function (modules, mediaQuery) {\n    if (typeof modules === 'string') {\n      // eslint-disable-next-line no-param-reassign\n      modules = [[null, modules, '']];\n    }\n\n    var alreadyImportedModules = {};\n\n    for (var i = 0; i < this.length; i++) {\n      // eslint-disable-next-line prefer-destructuring\n      var id = this[i][0];\n\n      if (id != null) {\n        alreadyImportedModules[id] = true;\n      }\n    }\n\n    for (var _i = 0; _i < modules.length; _i++) {\n      var item = modules[_i]; // skip already imported module\n      // this implementation is not 100% perfect for weird media query combinations\n      // when a module is imported multiple times with different media queries.\n      // I hope this will never occur (Hey this way we have smaller bundles)\n\n      if (item[0] == null || !alreadyImportedModules[item[0]]) {\n        if (mediaQuery && !item[2]) {\n          item[2] = mediaQuery;\n        } else if (mediaQuery) {\n          item[2] = \"(\".concat(item[2], \") and (\").concat(mediaQuery, \")\");\n        }\n\n        list.push(item);\n      }\n    }\n  };\n\n  return list;\n};\n\nfunction cssWithMappingToString(item, useSourceMap) {\n  var content = item[1] || ''; // eslint-disable-next-line prefer-destructuring\n\n  var cssMapping = item[3];\n\n  if (!cssMapping) {\n    return content;\n  }\n\n  if (useSourceMap && typeof btoa === 'function') {\n    var sourceMapping = toComment(cssMapping);\n    var sourceURLs = cssMapping.sources.map(function (source) {\n      return \"/*# sourceURL=\".concat(cssMapping.sourceRoot).concat(source, \" */\");\n    });\n    return [content].concat(sourceURLs).concat([sourceMapping]).join('\\n');\n  }\n\n  return [content].join('\\n');\n} // Adapted from convert-source-map (MIT)\n\n\nfunction toComment(sourceMap) {\n  // eslint-disable-next-line no-undef\n  var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));\n  var data = \"sourceMappingURL=data:application/json;charset=utf-8;base64,\".concat(base64);\n  return \"/*# \".concat(data, \" */\");\n}"
+        },
+        {
+          "id": "Kn1V",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "index": 8,
+          "index2": 10,
+          "size": 584,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+          "issuerId": "klam",
+          "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            },
+            {
+              "id": "klam",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "klam",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js",
+              "type": "cjs require",
+              "userRequest": "./TopNavigationApplicationCustomizer.module.css",
+              "loc": "2:0-58"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 2,
+          "source": "var content = require(\"!!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/postcss-loader/src/index.js??postcss!./TopNavigationApplicationCustomizer.module.css\");\nvar loader = require(\"D:\\\\host\\\\MySPFx\\\\CustomNavigation\\\\node_modules\\\\@microsoft\\\\loader-load-themed-styles\\\\node_modules\\\\@microsoft\\\\load-themed-styles\\\\lib\\\\index.js\");\n\nif(typeof content === \"string\") content = [[module.id, content]];\n\n// add the styles to the DOM\nfor (var i = 0; i < content.length; i++) loader.loadStyles(content[i][1], true);\n\nif(content.locals) module.exports = content.locals;"
+        },
+        {
+          "id": "LS73",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "name": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "index": 9,
+          "index2": 7,
+          "size": 415,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "issuerId": "Kn1V",
+          "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            },
+            {
+              "id": "klam",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+            },
+            {
+              "id": "Kn1V",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "Kn1V",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+              "type": "cjs require",
+              "userRequest": "!!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/postcss-loader/src/index.js??postcss!./TopNavigationApplicationCustomizer.module.css",
+              "loc": "1:14-178"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 3,
+          "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \".app_0087182a{height:40px;text-align:center;line-height:2.5;font-weight:700;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;color:\\\"[theme: themeLighterAlt]\\\";background-color:\\\"[theme: themeDarker]\\\"}\", \"\"]);\n"
+        },
+        {
+          "id": "TrAW",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+          "name": "./lib/extensions/services/index.js",
+          "index": 3,
+          "index2": 4,
+          "size": 29,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "issuerId": "2S9X",
+          "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "../services",
+              "loc": "16:0-39"
+            },
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony import specifier",
+              "userRequest": "../services",
+              "loc": "30:28-36"
+            }
+          ],
+          "providedExports": [
+            "Services"
+          ],
+          "optimizationBailout": [],
+          "depth": 1,
+          "source": "export * from './Services';\r\n"
+        },
+        {
+          "id": "UWqr",
+          "identifier": "external \"@microsoft/sp-core-library\"",
+          "name": "external \"@microsoft/sp-core-library\"",
+          "index": 1,
+          "index2": 0,
+          "size": 42,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "issuerId": "2S9X",
+          "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "@microsoft/sp-core-library",
+              "loc": "14:0-49"
+            },
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony import specifier",
+              "userRequest": "@microsoft/sp-core-library",
+              "loc": "28:8-11"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 1
+        },
+        {
+          "id": "klam",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js",
+          "index": 7,
+          "index2": 11,
+          "size": 174,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "issuerId": "2S9X",
+          "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "./TopNavigationApplicationCustomizer.module.scss",
+              "loc": "18:0-70"
+            },
+            {
+              "moduleId": "2S9X",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+              "type": "harmony import specifier",
+              "userRequest": "./TopNavigationApplicationCustomizer.module.scss",
+              "loc": "46:40-46"
+            }
+          ],
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [],
+          "depth": 1,
+          "source": "/* tslint:disable */\r\nrequire(\"./TopNavigationApplicationCustomizer.module.css\");\r\nvar styles = {\r\n    app: 'app_0087182a'\r\n};\r\nexport default styles;\r\n/* tslint:enable */ \r\n"
+        },
+        {
+          "id": "ruv1",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+          "name": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js",
+          "index": 11,
+          "index2": 9,
+          "size": 11370,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "issuerId": "Kn1V",
+          "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            },
+            {
+              "id": "klam",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+            },
+            {
+              "id": "Kn1V",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "Kn1V",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+              "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+              "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+              "type": "cjs require",
+              "userRequest": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+              "loc": "2:13-172"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 3,
+          "source": "\"use strict\";\n// Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.\n// See LICENSE in the project root for license information.\nvar __assign = (this && this.__assign) || function () {\n    __assign = Object.assign || function(t) {\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\n            s = arguments[i];\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\n                t[p] = s[p];\n        }\n        return t;\n    };\n    return __assign.apply(this, arguments);\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.splitStyles = exports.detokenize = exports.clearStyles = exports.loadTheme = exports.flush = exports.configureRunMode = exports.configureLoadStyles = exports.loadStyles = void 0;\n// Store the theming state in __themeState__ global scope for reuse in the case of duplicate\n// load-themed-styles hosted on the page.\nvar _root = typeof window === 'undefined' ? global : window; // eslint-disable-line @typescript-eslint/no-explicit-any\n// Nonce string to inject into script tag if one provided. This is used in CSP (Content Security Policy).\nvar _styleNonce = _root && _root.CSPSettings && _root.CSPSettings.nonce;\nvar _themeState = initializeThemeState();\n/**\n * Matches theming tokens. For example, \"[theme: themeSlotName, default: #FFF]\" (including the quotes).\n */\nvar _themeTokenRegex = /[\\'\\\"]\\[theme:\\s*(\\w+)\\s*(?:\\,\\s*default:\\s*([\\\\\"\\']?[\\.\\,\\(\\)\\#\\-\\s\\w]*[\\.\\,\\(\\)\\#\\-\\w][\\\"\\']?))?\\s*\\][\\'\\\"]/g;\nvar now = function () {\n    return typeof performance !== 'undefined' && !!performance.now ? performance.now() : Date.now();\n};\nfunction measure(func) {\n    var start = now();\n    func();\n    var end = now();\n    _themeState.perf.duration += end - start;\n}\n/**\n * initialize global state object\n */\nfunction initializeThemeState() {\n    var state = _root.__themeState__ || {\n        theme: undefined,\n        lastStyleElement: undefined,\n        registeredStyles: []\n    };\n    if (!state.runState) {\n        state = __assign(__assign({}, state), { perf: {\n                count: 0,\n                duration: 0\n            }, runState: {\n                flushTimer: 0,\n                mode: 0 /* sync */,\n                buffer: []\n            } });\n    }\n    if (!state.registeredThemableStyles) {\n        state = __assign(__assign({}, state), { registeredThemableStyles: [] });\n    }\n    _root.__themeState__ = state;\n    return state;\n}\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load\n * event is fired.\n * @param {string | ThemableArray} styles Themable style text to register.\n * @param {boolean} loadAsync When true, always load styles in async mode, irrespective of current sync mode.\n */\nfunction loadStyles(styles, loadAsync) {\n    if (loadAsync === void 0) { loadAsync = false; }\n    measure(function () {\n        var styleParts = Array.isArray(styles) ? styles : splitStyles(styles);\n        var _a = _themeState.runState, mode = _a.mode, buffer = _a.buffer, flushTimer = _a.flushTimer;\n        if (loadAsync || mode === 1 /* async */) {\n            buffer.push(styleParts);\n            if (!flushTimer) {\n                _themeState.runState.flushTimer = asyncLoadStyles();\n            }\n        }\n        else {\n            applyThemableStyles(styleParts);\n        }\n    });\n}\nexports.loadStyles = loadStyles;\n/**\n * Allows for customizable loadStyles logic. e.g. for server side rendering application\n * @param {(processedStyles: string, rawStyles?: string | ThemableArray) => void}\n * a loadStyles callback that gets called when styles are loaded or reloaded\n */\nfunction configureLoadStyles(loadStylesFn) {\n    _themeState.loadStyles = loadStylesFn;\n}\nexports.configureLoadStyles = configureLoadStyles;\n/**\n * Configure run mode of load-themable-styles\n * @param mode load-themable-styles run mode, async or sync\n */\nfunction configureRunMode(mode) {\n    _themeState.runState.mode = mode;\n}\nexports.configureRunMode = configureRunMode;\n/**\n * external code can call flush to synchronously force processing of currently buffered styles\n */\nfunction flush() {\n    measure(function () {\n        var styleArrays = _themeState.runState.buffer.slice();\n        _themeState.runState.buffer = [];\n        var mergedStyleArray = [].concat.apply([], styleArrays);\n        if (mergedStyleArray.length > 0) {\n            applyThemableStyles(mergedStyleArray);\n        }\n    });\n}\nexports.flush = flush;\n/**\n * register async loadStyles\n */\nfunction asyncLoadStyles() {\n    return setTimeout(function () {\n        _themeState.runState.flushTimer = 0;\n        flush();\n    }, 0);\n}\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load event\n * is fired.\n * @param {string} styleText Style to register.\n * @param {IStyleRecord} styleRecord Existing style record to re-apply.\n */\nfunction applyThemableStyles(stylesArray, styleRecord) {\n    if (_themeState.loadStyles) {\n        _themeState.loadStyles(resolveThemableArray(stylesArray).styleString, stylesArray);\n    }\n    else {\n        registerStyles(stylesArray);\n    }\n}\n/**\n * Registers a set theme tokens to find and replace. If styles were already registered, they will be\n * replaced.\n * @param {theme} theme JSON object of theme tokens to values.\n */\nfunction loadTheme(theme) {\n    _themeState.theme = theme;\n    // reload styles.\n    reloadStyles();\n}\nexports.loadTheme = loadTheme;\n/**\n * Clear already registered style elements and style records in theme_State object\n * @param option - specify which group of registered styles should be cleared.\n * Default to be both themable and non-themable styles will be cleared\n */\nfunction clearStyles(option) {\n    if (option === void 0) { option = 3 /* all */; }\n    if (option === 3 /* all */ || option === 2 /* onlyNonThemable */) {\n        clearStylesInternal(_themeState.registeredStyles);\n        _themeState.registeredStyles = [];\n    }\n    if (option === 3 /* all */ || option === 1 /* onlyThemable */) {\n        clearStylesInternal(_themeState.registeredThemableStyles);\n        _themeState.registeredThemableStyles = [];\n    }\n}\nexports.clearStyles = clearStyles;\nfunction clearStylesInternal(records) {\n    records.forEach(function (styleRecord) {\n        var styleElement = styleRecord && styleRecord.styleElement;\n        if (styleElement && styleElement.parentElement) {\n            styleElement.parentElement.removeChild(styleElement);\n        }\n    });\n}\n/**\n * Reloads styles.\n */\nfunction reloadStyles() {\n    if (_themeState.theme) {\n        var themableStyles = [];\n        for (var _i = 0, _a = _themeState.registeredThemableStyles; _i < _a.length; _i++) {\n            var styleRecord = _a[_i];\n            themableStyles.push(styleRecord.themableStyle);\n        }\n        if (themableStyles.length > 0) {\n            clearStyles(1 /* onlyThemable */);\n            applyThemableStyles([].concat.apply([], themableStyles));\n        }\n    }\n}\n/**\n * Find theme tokens and replaces them with provided theme values.\n * @param {string} styles Tokenized styles to fix.\n */\nfunction detokenize(styles) {\n    if (styles) {\n        styles = resolveThemableArray(splitStyles(styles)).styleString;\n    }\n    return styles;\n}\nexports.detokenize = detokenize;\n/**\n * Resolves ThemingInstruction objects in an array and joins the result into a string.\n * @param {ThemableArray} splitStyleArray ThemableArray to resolve and join.\n */\nfunction resolveThemableArray(splitStyleArray) {\n    var theme = _themeState.theme;\n    var themable = false;\n    // Resolve the array of theming instructions to an array of strings.\n    // Then join the array to produce the final CSS string.\n    var resolvedArray = (splitStyleArray || []).map(function (currentValue) {\n        var themeSlot = currentValue.theme;\n        if (themeSlot) {\n            themable = true;\n            // A theming annotation. Resolve it.\n            var themedValue = theme ? theme[themeSlot] : undefined;\n            var defaultValue = currentValue.defaultValue || 'inherit';\n            // Warn to console if we hit an unthemed value even when themes are provided, but only if \"DEBUG\" is true.\n            // Allow the themedValue to be undefined to explicitly request the default value.\n            if (theme &&\n                !themedValue &&\n                console &&\n                !(themeSlot in theme) &&\n                typeof DEBUG !== 'undefined' &&\n                DEBUG) {\n                console.warn(\"Theming value not provided for \\\"\".concat(themeSlot, \"\\\". Falling back to \\\"\").concat(defaultValue, \"\\\".\"));\n            }\n            return themedValue || defaultValue;\n        }\n        else {\n            // A non-themable string. Preserve it.\n            return currentValue.rawString;\n        }\n    });\n    return {\n        styleString: resolvedArray.join(''),\n        themable: themable\n    };\n}\n/**\n * Split tokenized CSS into an array of strings and theme specification objects\n * @param {string} styles Tokenized styles to split.\n */\nfunction splitStyles(styles) {\n    var result = [];\n    if (styles) {\n        var pos = 0; // Current position in styles.\n        var tokenMatch = void 0;\n        while ((tokenMatch = _themeTokenRegex.exec(styles))) {\n            var matchIndex = tokenMatch.index;\n            if (matchIndex > pos) {\n                result.push({\n                    rawString: styles.substring(pos, matchIndex)\n                });\n            }\n            result.push({\n                theme: tokenMatch[1],\n                defaultValue: tokenMatch[2] // May be undefined\n            });\n            // index of the first character after the current match\n            pos = _themeTokenRegex.lastIndex;\n        }\n        // Push the rest of the string after the last match.\n        result.push({\n            rawString: styles.substring(pos)\n        });\n    }\n    return result;\n}\nexports.splitStyles = splitStyles;\n/**\n * Registers a set of style text. If it is registered too early, we will register it when the\n * window.load event is fired.\n * @param {ThemableArray} styleArray Array of IThemingInstruction objects to register.\n * @param {IStyleRecord} styleRecord May specify a style Element to update.\n */\nfunction registerStyles(styleArray) {\n    if (typeof document === 'undefined') {\n        return;\n    }\n    var head = document.getElementsByTagName('head')[0];\n    var styleElement = document.createElement('style');\n    var _a = resolveThemableArray(styleArray), styleString = _a.styleString, themable = _a.themable;\n    styleElement.setAttribute('data-load-themed-styles', 'true');\n    if (_styleNonce) {\n        styleElement.setAttribute('nonce', _styleNonce);\n    }\n    styleElement.appendChild(document.createTextNode(styleString));\n    _themeState.perf.count++;\n    head.appendChild(styleElement);\n    var ev = document.createEvent('HTMLEvents');\n    ev.initEvent('styleinsert', true /* bubbleEvent */, false /* cancelable */);\n    ev.args = {\n        newStyle: styleElement\n    };\n    document.dispatchEvent(ev);\n    var record = {\n        styleElement: styleElement,\n        themableStyle: styleArray\n    };\n    if (themable) {\n        _themeState.registeredThemableStyles.push(record);\n    }\n    else {\n        _themeState.registeredStyles.push(record);\n    }\n}\n//# sourceMappingURL=index.js.map"
+        },
+        {
+          "id": "vlQI",
+          "identifier": "external \"@microsoft/sp-http\"",
+          "name": "external \"@microsoft/sp-http\"",
+          "index": 5,
+          "index2": 2,
+          "size": 42,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+          "issuerId": "4ujg",
+          "issuerName": "./lib/extensions/services/Services.js",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            },
+            {
+              "id": "TrAW",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+              "name": "./lib/extensions/services/index.js"
+            },
+            {
+              "id": "4ujg",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+              "name": "./lib/extensions/services/Services.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "4ujg",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+              "module": "./lib/extensions/services/Services.js",
+              "moduleName": "./lib/extensions/services/Services.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "@microsoft/sp-http",
+              "loc": "1:0-50"
+            },
+            {
+              "moduleId": "4ujg",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+              "module": "./lib/extensions/services/Services.js",
+              "moduleName": "./lib/extensions/services/Services.js",
+              "type": "harmony import specifier",
+              "userRequest": "@microsoft/sp-http",
+              "loc": "18:36-48"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 3
+        },
+        {
+          "id": "yLpj",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\webpack\\buildin\\global.js",
+          "name": "(webpack)/buildin/global.js",
+          "index": 12,
+          "index2": 8,
+          "size": 472,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            "top-navigation-application-customizer"
+          ],
+          "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+          "issuerId": "ruv1",
+          "issuerName": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js",
+          "issuerPath": [
+            {
+              "id": "2S9X",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+            },
+            {
+              "id": "klam",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+            },
+            {
+              "id": "Kn1V",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+              "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+            },
+            {
+              "id": "ruv1",
+              "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+              "name": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": "ruv1",
+              "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+              "module": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js",
+              "moduleName": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js",
+              "type": "cjs require",
+              "userRequest": "global",
+              "loc": "1:0-56"
+            }
+          ],
+          "providedExports": null,
+          "optimizationBailout": [],
+          "depth": 4,
+          "source": "var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn this;\n})();\n\ntry {\n\t// This works if eval is allowed (see CSP)\n\tg = g || new Function(\"return this\")();\n} catch (e) {\n\t// This works if the window reference is available\n\tif (typeof window === \"object\") g = window;\n}\n\n// g can still be undefined, but nothing to do about it...\n// We return undefined, instead of nothing here, so it's\n// easier to handle this case. if(!global) { ...}\n\nmodule.exports = g;\n"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "top-navigation-application-customizer",
+          "request": "D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": "2S9X",
+      "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+      "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+      "index": 0,
+      "index2": 12,
+      "size": 2915,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "loc": "top-navigation-application-customizer"
+        }
+      ],
+      "providedExports": [
+        "default"
+      ],
+      "optimizationBailout": [],
+      "depth": 0,
+      "source": "var __extends = (this && this.__extends) || (function () {\r\n    var extendStatics = function (d, b) {\r\n        extendStatics = Object.setPrototypeOf ||\r\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\r\n            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };\r\n        return extendStatics(d, b);\r\n    };\r\n    return function (d, b) {\r\n        extendStatics(d, b);\r\n        function __() { this.constructor = d; }\r\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\r\n    };\r\n})();\r\nimport { Log } from '@microsoft/sp-core-library';\r\nimport { BaseApplicationCustomizer, PlaceholderName } from '@microsoft/sp-application-base';\r\nimport { Services } from '../services';\r\nimport * as strings from 'TopNavigationApplicationCustomizerStrings';\r\nimport styles from './TopNavigationApplicationCustomizer.module.scss';\r\nvar LOG_SOURCE = 'TopNavigationApplicationCustomizer';\r\n/** A Custom Action which can be run during execution of a Client Side Application */\r\nvar TopNavigationApplicationCustomizer = /** @class */ (function (_super) {\r\n    __extends(TopNavigationApplicationCustomizer, _super);\r\n    function TopNavigationApplicationCustomizer() {\r\n        return _super !== null && _super.apply(this, arguments) || this;\r\n    }\r\n    TopNavigationApplicationCustomizer.prototype.onInit = function () {\r\n        var _this = this;\r\n        Log.info(LOG_SOURCE, \"Initialized \" + strings.Title);\r\n        //this._renderPlaceholder();\r\n        this.services = new Services(this.context.pageContext.web.absoluteUrl, this.context.spHttpClient);\r\n        this.services.getMenu().then(function (menu) {\r\n            console.log(menu);\r\n            _this._renderPlaceholder(menu);\r\n        });\r\n        return Promise.resolve();\r\n    };\r\n    TopNavigationApplicationCustomizer.prototype._onDispose = function () { };\r\n    TopNavigationApplicationCustomizer.prototype._renderPlaceholder = function (mItems) {\r\n        if (!this._topPlaceholder) {\r\n            this._topPlaceholder = this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top, { onDispose: this._onDispose });\r\n        }\r\n        if (!this._topPlaceholder) {\r\n            console.log('Placeholder top wasn\\'t found');\r\n            return;\r\n        }\r\n        var topMenuUl = \"<ul class='\" + styles.app + \"'>\";\r\n        var topMenuLis = '';\r\n        mItems.map(function (item, key) {\r\n            topMenuLis += \"<li id='\" + key + \"'><a href='\" + item.Url + \"'> \" + item.Title + \" </a></li>\";\r\n        });\r\n        var completedNav = topMenuUl + topMenuLis + '</ul>';\r\n        if (this._topPlaceholder.domElement) {\r\n            this._topPlaceholder.domElement.innerHTML = completedNav;\r\n        }\r\n    };\r\n    return TopNavigationApplicationCustomizer;\r\n}(BaseApplicationCustomizer));\r\nexport default TopNavigationApplicationCustomizer;\r\n"
+    },
+    {
+      "id": "2W52",
+      "identifier": "external \"TopNavigationApplicationCustomizerStrings\"",
+      "name": "external \"TopNavigationApplicationCustomizerStrings\"",
+      "index": 6,
+      "index2": 5,
+      "size": 42,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+      "issuerId": "2S9X",
+      "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "TopNavigationApplicationCustomizerStrings",
+          "loc": "17:0-69"
+        },
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony import specifier",
+          "userRequest": "TopNavigationApplicationCustomizerStrings",
+          "loc": "28:46-59"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 1
+    },
+    {
+      "id": "4ujg",
+      "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+      "name": "./lib/extensions/services/Services.js",
+      "index": 4,
+      "index2": 3,
+      "size": 1138,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+      "issuerId": "TrAW",
+      "issuerName": "./lib/extensions/services/index.js",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        },
+        {
+          "id": "TrAW",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+          "name": "./lib/extensions/services/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "TrAW",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+          "module": "./lib/extensions/services/index.js",
+          "moduleName": "./lib/extensions/services/index.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "./Services",
+          "loc": "1:0-27"
+        },
+        {
+          "moduleId": "TrAW",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+          "module": "./lib/extensions/services/index.js",
+          "moduleName": "./lib/extensions/services/index.js",
+          "type": "harmony export imported specifier",
+          "userRequest": "./Services",
+          "loc": "1:0-27"
+        }
+      ],
+      "providedExports": [
+        "Services"
+      ],
+      "optimizationBailout": [],
+      "depth": 2,
+      "source": "import { SPHttpClient } from '@microsoft/sp-http';\r\nvar QUERY = \"Navigation/QuickLaunch?$expand=children\";\r\nvar API_ENDPOINT = \"/_api/web/\";\r\nvar Services = /** @class */ (function () {\r\n    function Services(absoluteUrl, client) {\r\n        this.absoluteUrl = absoluteUrl;\r\n        this.client = client;\r\n        this._spHttpOptions = {\r\n            getNoMetaData: {\r\n                headers: { 'ACCEPT': 'application/json; odata.metadata=none' }\r\n            }\r\n        };\r\n    }\r\n    Services.prototype.getMenu = function () {\r\n        var _this = this;\r\n        var promise = new Promise(function (resolve, reject) {\r\n            var query = \"\" + _this.absoluteUrl + API_ENDPOINT + QUERY;\r\n            _this.client.get(query, SPHttpClient.configurations.v1, _this._spHttpOptions.getNoMetaData).then(function (response) {\r\n                return response.json();\r\n            }).then(function (response) {\r\n                resolve(response.value);\r\n            }).catch(function (error) {\r\n                reject(error);\r\n            });\r\n        });\r\n        return promise;\r\n    };\r\n    return Services;\r\n}());\r\nexport { Services };\r\n"
+    },
+    {
+      "id": "GPet",
+      "identifier": "external \"@microsoft/sp-application-base\"",
+      "name": "external \"@microsoft/sp-application-base\"",
+      "index": 2,
+      "index2": 1,
+      "size": 42,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+      "issuerId": "2S9X",
+      "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "@microsoft/sp-application-base",
+          "loc": "15:0-92"
+        },
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony import specifier",
+          "userRequest": "@microsoft/sp-application-base",
+          "loc": "40:85-100"
+        },
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony import specifier",
+          "userRequest": "@microsoft/sp-application-base",
+          "loc": "57:2-27"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 1
+    },
+    {
+      "id": "I6O9",
+      "identifier": "external \"@microsoft/sp-loader\"",
+      "name": "external \"@microsoft/sp-loader\"",
+      "index": null,
+      "index2": null,
+      "size": 42,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "id": "JPst",
+      "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\runtime\\api.js",
+      "name": "./node_modules/css-loader/dist/runtime/api.js",
+      "index": 10,
+      "index2": 6,
+      "size": 2677,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+      "issuerId": "LS73",
+      "issuerName": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        },
+        {
+          "id": "klam",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+        },
+        {
+          "id": "Kn1V",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+        },
+        {
+          "id": "LS73",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "name": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "LS73",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "module": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "moduleName": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "type": "cjs require",
+          "userRequest": "../../../node_modules/css-loader/dist/runtime/api.js",
+          "loc": "1:27-90"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 4,
+      "source": "\"use strict\";\n\n/*\n  MIT License http://www.opensource.org/licenses/mit-license.php\n  Author Tobias Koppers @sokra\n*/\n// css base code, injected by the css-loader\n// eslint-disable-next-line func-names\nmodule.exports = function (useSourceMap) {\n  var list = []; // return the list of modules as css string\n\n  list.toString = function toString() {\n    return this.map(function (item) {\n      var content = cssWithMappingToString(item, useSourceMap);\n\n      if (item[2]) {\n        return \"@media \".concat(item[2], \"{\").concat(content, \"}\");\n      }\n\n      return content;\n    }).join('');\n  }; // import a list of modules into the list\n  // eslint-disable-next-line func-names\n\n\n  list.i = function (modules, mediaQuery) {\n    if (typeof modules === 'string') {\n      // eslint-disable-next-line no-param-reassign\n      modules = [[null, modules, '']];\n    }\n\n    var alreadyImportedModules = {};\n\n    for (var i = 0; i < this.length; i++) {\n      // eslint-disable-next-line prefer-destructuring\n      var id = this[i][0];\n\n      if (id != null) {\n        alreadyImportedModules[id] = true;\n      }\n    }\n\n    for (var _i = 0; _i < modules.length; _i++) {\n      var item = modules[_i]; // skip already imported module\n      // this implementation is not 100% perfect for weird media query combinations\n      // when a module is imported multiple times with different media queries.\n      // I hope this will never occur (Hey this way we have smaller bundles)\n\n      if (item[0] == null || !alreadyImportedModules[item[0]]) {\n        if (mediaQuery && !item[2]) {\n          item[2] = mediaQuery;\n        } else if (mediaQuery) {\n          item[2] = \"(\".concat(item[2], \") and (\").concat(mediaQuery, \")\");\n        }\n\n        list.push(item);\n      }\n    }\n  };\n\n  return list;\n};\n\nfunction cssWithMappingToString(item, useSourceMap) {\n  var content = item[1] || ''; // eslint-disable-next-line prefer-destructuring\n\n  var cssMapping = item[3];\n\n  if (!cssMapping) {\n    return content;\n  }\n\n  if (useSourceMap && typeof btoa === 'function') {\n    var sourceMapping = toComment(cssMapping);\n    var sourceURLs = cssMapping.sources.map(function (source) {\n      return \"/*# sourceURL=\".concat(cssMapping.sourceRoot).concat(source, \" */\");\n    });\n    return [content].concat(sourceURLs).concat([sourceMapping]).join('\\n');\n  }\n\n  return [content].join('\\n');\n} // Adapted from convert-source-map (MIT)\n\n\nfunction toComment(sourceMap) {\n  // eslint-disable-next-line no-undef\n  var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));\n  var data = \"sourceMappingURL=data:application/json;charset=utf-8;base64,\".concat(base64);\n  return \"/*# \".concat(data, \" */\");\n}"
+    },
+    {
+      "id": "Kn1V",
+      "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+      "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+      "index": 8,
+      "index2": 10,
+      "size": 584,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+      "issuerId": "klam",
+      "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        },
+        {
+          "id": "klam",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "klam",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js",
+          "type": "cjs require",
+          "userRequest": "./TopNavigationApplicationCustomizer.module.css",
+          "loc": "2:0-58"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 2,
+      "source": "var content = require(\"!!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/postcss-loader/src/index.js??postcss!./TopNavigationApplicationCustomizer.module.css\");\nvar loader = require(\"D:\\\\host\\\\MySPFx\\\\CustomNavigation\\\\node_modules\\\\@microsoft\\\\loader-load-themed-styles\\\\node_modules\\\\@microsoft\\\\load-themed-styles\\\\lib\\\\index.js\");\n\nif(typeof content === \"string\") content = [[module.id, content]];\n\n// add the styles to the DOM\nfor (var i = 0; i < content.length; i++) loader.loadStyles(content[i][1], true);\n\nif(content.locals) module.exports = content.locals;"
+    },
+    {
+      "id": "LS73",
+      "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+      "name": "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src??postcss!./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+      "index": 9,
+      "index2": 7,
+      "size": 415,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+      "issuerId": "Kn1V",
+      "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        },
+        {
+          "id": "klam",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+        },
+        {
+          "id": "Kn1V",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "Kn1V",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "type": "cjs require",
+          "userRequest": "!!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/postcss-loader/src/index.js??postcss!./TopNavigationApplicationCustomizer.module.css",
+          "loc": "1:14-178"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 3,
+      "source": "exports = module.exports = require(\"../../../node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \".app_0087182a{height:40px;text-align:center;line-height:2.5;font-weight:700;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;color:\\\"[theme: themeLighterAlt]\\\";background-color:\\\"[theme: themeDarker]\\\"}\", \"\"]);\n"
+    },
+    {
+      "id": "TrAW",
+      "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+      "name": "./lib/extensions/services/index.js",
+      "index": 3,
+      "index2": 4,
+      "size": 29,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+      "issuerId": "2S9X",
+      "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "../services",
+          "loc": "16:0-39"
+        },
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony import specifier",
+          "userRequest": "../services",
+          "loc": "30:28-36"
+        }
+      ],
+      "providedExports": [
+        "Services"
+      ],
+      "optimizationBailout": [],
+      "depth": 1,
+      "source": "export * from './Services';\r\n"
+    },
+    {
+      "id": "UWqr",
+      "identifier": "external \"@microsoft/sp-core-library\"",
+      "name": "external \"@microsoft/sp-core-library\"",
+      "index": 1,
+      "index2": 0,
+      "size": 42,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+      "issuerId": "2S9X",
+      "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "@microsoft/sp-core-library",
+          "loc": "14:0-49"
+        },
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony import specifier",
+          "userRequest": "@microsoft/sp-core-library",
+          "loc": "28:8-11"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 1
+    },
+    {
+      "id": "klam",
+      "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+      "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js",
+      "index": 7,
+      "index2": 11,
+      "size": 174,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+      "issuerId": "2S9X",
+      "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "./TopNavigationApplicationCustomizer.module.scss",
+          "loc": "18:0-70"
+        },
+        {
+          "moduleId": "2S9X",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "type": "harmony import specifier",
+          "userRequest": "./TopNavigationApplicationCustomizer.module.scss",
+          "loc": "46:40-46"
+        }
+      ],
+      "providedExports": [
+        "default"
+      ],
+      "optimizationBailout": [],
+      "depth": 1,
+      "source": "/* tslint:disable */\r\nrequire(\"./TopNavigationApplicationCustomizer.module.css\");\r\nvar styles = {\r\n    app: 'app_0087182a'\r\n};\r\nexport default styles;\r\n/* tslint:enable */ \r\n"
+    },
+    {
+      "id": "ruv1",
+      "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+      "name": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js",
+      "index": 11,
+      "index2": 9,
+      "size": 11370,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+      "issuerId": "Kn1V",
+      "issuerName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        },
+        {
+          "id": "klam",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+        },
+        {
+          "id": "Kn1V",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "Kn1V",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "module": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "moduleName": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css",
+          "type": "cjs require",
+          "userRequest": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+          "loc": "2:13-172"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 3,
+      "source": "\"use strict\";\n// Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.\n// See LICENSE in the project root for license information.\nvar __assign = (this && this.__assign) || function () {\n    __assign = Object.assign || function(t) {\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\n            s = arguments[i];\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\n                t[p] = s[p];\n        }\n        return t;\n    };\n    return __assign.apply(this, arguments);\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.splitStyles = exports.detokenize = exports.clearStyles = exports.loadTheme = exports.flush = exports.configureRunMode = exports.configureLoadStyles = exports.loadStyles = void 0;\n// Store the theming state in __themeState__ global scope for reuse in the case of duplicate\n// load-themed-styles hosted on the page.\nvar _root = typeof window === 'undefined' ? global : window; // eslint-disable-line @typescript-eslint/no-explicit-any\n// Nonce string to inject into script tag if one provided. This is used in CSP (Content Security Policy).\nvar _styleNonce = _root && _root.CSPSettings && _root.CSPSettings.nonce;\nvar _themeState = initializeThemeState();\n/**\n * Matches theming tokens. For example, \"[theme: themeSlotName, default: #FFF]\" (including the quotes).\n */\nvar _themeTokenRegex = /[\\'\\\"]\\[theme:\\s*(\\w+)\\s*(?:\\,\\s*default:\\s*([\\\\\"\\']?[\\.\\,\\(\\)\\#\\-\\s\\w]*[\\.\\,\\(\\)\\#\\-\\w][\\\"\\']?))?\\s*\\][\\'\\\"]/g;\nvar now = function () {\n    return typeof performance !== 'undefined' && !!performance.now ? performance.now() : Date.now();\n};\nfunction measure(func) {\n    var start = now();\n    func();\n    var end = now();\n    _themeState.perf.duration += end - start;\n}\n/**\n * initialize global state object\n */\nfunction initializeThemeState() {\n    var state = _root.__themeState__ || {\n        theme: undefined,\n        lastStyleElement: undefined,\n        registeredStyles: []\n    };\n    if (!state.runState) {\n        state = __assign(__assign({}, state), { perf: {\n                count: 0,\n                duration: 0\n            }, runState: {\n                flushTimer: 0,\n                mode: 0 /* sync */,\n                buffer: []\n            } });\n    }\n    if (!state.registeredThemableStyles) {\n        state = __assign(__assign({}, state), { registeredThemableStyles: [] });\n    }\n    _root.__themeState__ = state;\n    return state;\n}\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load\n * event is fired.\n * @param {string | ThemableArray} styles Themable style text to register.\n * @param {boolean} loadAsync When true, always load styles in async mode, irrespective of current sync mode.\n */\nfunction loadStyles(styles, loadAsync) {\n    if (loadAsync === void 0) { loadAsync = false; }\n    measure(function () {\n        var styleParts = Array.isArray(styles) ? styles : splitStyles(styles);\n        var _a = _themeState.runState, mode = _a.mode, buffer = _a.buffer, flushTimer = _a.flushTimer;\n        if (loadAsync || mode === 1 /* async */) {\n            buffer.push(styleParts);\n            if (!flushTimer) {\n                _themeState.runState.flushTimer = asyncLoadStyles();\n            }\n        }\n        else {\n            applyThemableStyles(styleParts);\n        }\n    });\n}\nexports.loadStyles = loadStyles;\n/**\n * Allows for customizable loadStyles logic. e.g. for server side rendering application\n * @param {(processedStyles: string, rawStyles?: string | ThemableArray) => void}\n * a loadStyles callback that gets called when styles are loaded or reloaded\n */\nfunction configureLoadStyles(loadStylesFn) {\n    _themeState.loadStyles = loadStylesFn;\n}\nexports.configureLoadStyles = configureLoadStyles;\n/**\n * Configure run mode of load-themable-styles\n * @param mode load-themable-styles run mode, async or sync\n */\nfunction configureRunMode(mode) {\n    _themeState.runState.mode = mode;\n}\nexports.configureRunMode = configureRunMode;\n/**\n * external code can call flush to synchronously force processing of currently buffered styles\n */\nfunction flush() {\n    measure(function () {\n        var styleArrays = _themeState.runState.buffer.slice();\n        _themeState.runState.buffer = [];\n        var mergedStyleArray = [].concat.apply([], styleArrays);\n        if (mergedStyleArray.length > 0) {\n            applyThemableStyles(mergedStyleArray);\n        }\n    });\n}\nexports.flush = flush;\n/**\n * register async loadStyles\n */\nfunction asyncLoadStyles() {\n    return setTimeout(function () {\n        _themeState.runState.flushTimer = 0;\n        flush();\n    }, 0);\n}\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load event\n * is fired.\n * @param {string} styleText Style to register.\n * @param {IStyleRecord} styleRecord Existing style record to re-apply.\n */\nfunction applyThemableStyles(stylesArray, styleRecord) {\n    if (_themeState.loadStyles) {\n        _themeState.loadStyles(resolveThemableArray(stylesArray).styleString, stylesArray);\n    }\n    else {\n        registerStyles(stylesArray);\n    }\n}\n/**\n * Registers a set theme tokens to find and replace. If styles were already registered, they will be\n * replaced.\n * @param {theme} theme JSON object of theme tokens to values.\n */\nfunction loadTheme(theme) {\n    _themeState.theme = theme;\n    // reload styles.\n    reloadStyles();\n}\nexports.loadTheme = loadTheme;\n/**\n * Clear already registered style elements and style records in theme_State object\n * @param option - specify which group of registered styles should be cleared.\n * Default to be both themable and non-themable styles will be cleared\n */\nfunction clearStyles(option) {\n    if (option === void 0) { option = 3 /* all */; }\n    if (option === 3 /* all */ || option === 2 /* onlyNonThemable */) {\n        clearStylesInternal(_themeState.registeredStyles);\n        _themeState.registeredStyles = [];\n    }\n    if (option === 3 /* all */ || option === 1 /* onlyThemable */) {\n        clearStylesInternal(_themeState.registeredThemableStyles);\n        _themeState.registeredThemableStyles = [];\n    }\n}\nexports.clearStyles = clearStyles;\nfunction clearStylesInternal(records) {\n    records.forEach(function (styleRecord) {\n        var styleElement = styleRecord && styleRecord.styleElement;\n        if (styleElement && styleElement.parentElement) {\n            styleElement.parentElement.removeChild(styleElement);\n        }\n    });\n}\n/**\n * Reloads styles.\n */\nfunction reloadStyles() {\n    if (_themeState.theme) {\n        var themableStyles = [];\n        for (var _i = 0, _a = _themeState.registeredThemableStyles; _i < _a.length; _i++) {\n            var styleRecord = _a[_i];\n            themableStyles.push(styleRecord.themableStyle);\n        }\n        if (themableStyles.length > 0) {\n            clearStyles(1 /* onlyThemable */);\n            applyThemableStyles([].concat.apply([], themableStyles));\n        }\n    }\n}\n/**\n * Find theme tokens and replaces them with provided theme values.\n * @param {string} styles Tokenized styles to fix.\n */\nfunction detokenize(styles) {\n    if (styles) {\n        styles = resolveThemableArray(splitStyles(styles)).styleString;\n    }\n    return styles;\n}\nexports.detokenize = detokenize;\n/**\n * Resolves ThemingInstruction objects in an array and joins the result into a string.\n * @param {ThemableArray} splitStyleArray ThemableArray to resolve and join.\n */\nfunction resolveThemableArray(splitStyleArray) {\n    var theme = _themeState.theme;\n    var themable = false;\n    // Resolve the array of theming instructions to an array of strings.\n    // Then join the array to produce the final CSS string.\n    var resolvedArray = (splitStyleArray || []).map(function (currentValue) {\n        var themeSlot = currentValue.theme;\n        if (themeSlot) {\n            themable = true;\n            // A theming annotation. Resolve it.\n            var themedValue = theme ? theme[themeSlot] : undefined;\n            var defaultValue = currentValue.defaultValue || 'inherit';\n            // Warn to console if we hit an unthemed value even when themes are provided, but only if \"DEBUG\" is true.\n            // Allow the themedValue to be undefined to explicitly request the default value.\n            if (theme &&\n                !themedValue &&\n                console &&\n                !(themeSlot in theme) &&\n                typeof DEBUG !== 'undefined' &&\n                DEBUG) {\n                console.warn(\"Theming value not provided for \\\"\".concat(themeSlot, \"\\\". Falling back to \\\"\").concat(defaultValue, \"\\\".\"));\n            }\n            return themedValue || defaultValue;\n        }\n        else {\n            // A non-themable string. Preserve it.\n            return currentValue.rawString;\n        }\n    });\n    return {\n        styleString: resolvedArray.join(''),\n        themable: themable\n    };\n}\n/**\n * Split tokenized CSS into an array of strings and theme specification objects\n * @param {string} styles Tokenized styles to split.\n */\nfunction splitStyles(styles) {\n    var result = [];\n    if (styles) {\n        var pos = 0; // Current position in styles.\n        var tokenMatch = void 0;\n        while ((tokenMatch = _themeTokenRegex.exec(styles))) {\n            var matchIndex = tokenMatch.index;\n            if (matchIndex > pos) {\n                result.push({\n                    rawString: styles.substring(pos, matchIndex)\n                });\n            }\n            result.push({\n                theme: tokenMatch[1],\n                defaultValue: tokenMatch[2] // May be undefined\n            });\n            // index of the first character after the current match\n            pos = _themeTokenRegex.lastIndex;\n        }\n        // Push the rest of the string after the last match.\n        result.push({\n            rawString: styles.substring(pos)\n        });\n    }\n    return result;\n}\nexports.splitStyles = splitStyles;\n/**\n * Registers a set of style text. If it is registered too early, we will register it when the\n * window.load event is fired.\n * @param {ThemableArray} styleArray Array of IThemingInstruction objects to register.\n * @param {IStyleRecord} styleRecord May specify a style Element to update.\n */\nfunction registerStyles(styleArray) {\n    if (typeof document === 'undefined') {\n        return;\n    }\n    var head = document.getElementsByTagName('head')[0];\n    var styleElement = document.createElement('style');\n    var _a = resolveThemableArray(styleArray), styleString = _a.styleString, themable = _a.themable;\n    styleElement.setAttribute('data-load-themed-styles', 'true');\n    if (_styleNonce) {\n        styleElement.setAttribute('nonce', _styleNonce);\n    }\n    styleElement.appendChild(document.createTextNode(styleString));\n    _themeState.perf.count++;\n    head.appendChild(styleElement);\n    var ev = document.createEvent('HTMLEvents');\n    ev.initEvent('styleinsert', true /* bubbleEvent */, false /* cancelable */);\n    ev.args = {\n        newStyle: styleElement\n    };\n    document.dispatchEvent(ev);\n    var record = {\n        styleElement: styleElement,\n        themableStyle: styleArray\n    };\n    if (themable) {\n        _themeState.registeredThemableStyles.push(record);\n    }\n    else {\n        _themeState.registeredStyles.push(record);\n    }\n}\n//# sourceMappingURL=index.js.map"
+    },
+    {
+      "id": "vlQI",
+      "identifier": "external \"@microsoft/sp-http\"",
+      "name": "external \"@microsoft/sp-http\"",
+      "index": 5,
+      "index2": 2,
+      "size": 42,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+      "issuerId": "4ujg",
+      "issuerName": "./lib/extensions/services/Services.js",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        },
+        {
+          "id": "TrAW",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\index.js",
+          "name": "./lib/extensions/services/index.js"
+        },
+        {
+          "id": "4ujg",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+          "name": "./lib/extensions/services/Services.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "4ujg",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+          "module": "./lib/extensions/services/Services.js",
+          "moduleName": "./lib/extensions/services/Services.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "@microsoft/sp-http",
+          "loc": "1:0-50"
+        },
+        {
+          "moduleId": "4ujg",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\services\\Services.js",
+          "module": "./lib/extensions/services/Services.js",
+          "moduleName": "./lib/extensions/services/Services.js",
+          "type": "harmony import specifier",
+          "userRequest": "@microsoft/sp-http",
+          "loc": "18:36-48"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 3
+    },
+    {
+      "id": "yLpj",
+      "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\webpack\\buildin\\global.js",
+      "name": "(webpack)/buildin/global.js",
+      "index": 12,
+      "index2": 8,
+      "size": 472,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        "top-navigation-application-customizer"
+      ],
+      "issuer": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+      "issuerId": "ruv1",
+      "issuerName": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js",
+      "issuerPath": [
+        {
+          "id": "2S9X",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js"
+        },
+        {
+          "id": "klam",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\source-map-loader\\index.js!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.scss.js",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.scss.js"
+        },
+        {
+          "id": "Kn1V",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js??ref--4-0!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\css-loader\\dist\\cjs.js!D:\\host\\MySPFx\\CustomNavigation\\node_modules\\postcss-loader\\src\\index.js??postcss!D:\\host\\MySPFx\\CustomNavigation\\lib\\extensions\\topNavigation\\TopNavigationApplicationCustomizer.module.css",
+          "name": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.module.css"
+        },
+        {
+          "id": "ruv1",
+          "identifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+          "name": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": "ruv1",
+          "moduleIdentifier": "D:\\host\\MySPFx\\CustomNavigation\\node_modules\\@microsoft\\loader-load-themed-styles\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+          "module": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js",
+          "moduleName": "./node_modules/@microsoft/loader-load-themed-styles/node_modules/@microsoft/load-themed-styles/lib/index.js",
+          "type": "cjs require",
+          "userRequest": "global",
+          "loc": "1:0-56"
+        }
+      ],
+      "providedExports": null,
+      "optimizationBailout": [],
+      "depth": 4,
+      "source": "var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn this;\n})();\n\ntry {\n\t// This works if eval is allowed (see CSP)\n\tg = g || new Function(\"return this\")();\n} catch (e) {\n\t// This works if the window reference is available\n\tif (typeof window === \"object\") g = window;\n}\n\n// g can still be undefined, but nothing to do about it...\n// We return undefined, instead of nothing here, so it's\n// easier to handle this case. if(!global) { ...}\n\nmodule.exports = g;\n"
+    }
+  ],
+  "filteredModules": 0,
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 2,
+      "debug": false
+    }
+  },
+  "children": []
+}

@@ -1,0 +1,40 @@
+{
+  "id": "f5bfd512-8eac-40de-aa7b-555980660517",
+  "alias": "TopNavigationApplicationCustomizer",
+  "componentType": "Extension",
+  "extensionType": "ApplicationCustomizer",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/dist/"
+    ],
+    "entryModuleId": "top-navigation-application-customizer",
+    "scriptResources": {
+      "top-navigation-application-customizer": {
+        "type": "path",
+        "path": "top-navigation-application-customizer.js"
+      },
+      "TopNavigationApplicationCustomizerStrings": {
+        "type": "path",
+        "path": "TopNavigationApplicationCustomizerStrings_en-us.js"
+      },
+      "@microsoft/sp-application-base": {
+        "type": "component",
+        "id": "4df9bb86-ab0a-4aab-ab5f-48bf167048fb",
+        "version": "1.14.0"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.14.0"
+      },
+      "@microsoft/sp-http": {
+        "type": "component",
+        "id": "c07208f0-ea3b-4c1a-9965-ac1b825211a6",
+        "version": "1.14.0"
+      }
+    }
+  }
+}

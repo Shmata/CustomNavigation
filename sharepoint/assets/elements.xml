@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="TopNavigation"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="f5bfd512-8eac-40de-aa7b-555980660517"
+        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test&quot;}">
+    </CustomAction>
+</Elements>

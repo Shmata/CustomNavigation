@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "top-navigation-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/topNavigation/TopNavigationApplicationCustomizer.js",
+          "manifest": "./src/extensions/topNavigation/TopNavigationApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TopNavigationApplicationCustomizerStrings": "lib/extensions/topNavigation/loc/{locale}.js"
+  }
+}
