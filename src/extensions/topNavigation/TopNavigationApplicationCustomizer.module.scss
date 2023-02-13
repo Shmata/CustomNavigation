@@ -8,4 +8,22 @@
   justify-content: center;
   color: "[theme: themeLighterAlt]";
   background-color: "[theme: themeDarker]";
+  margin: 0;
+}
+
+.app li{
+  list-style: none;
+  padding: 0 8px;
+  float: left;
+  position: relative;
+}
+
+.app li a{
+  color: azure;
+  text-decoration: none;
+}
+
+.app li a:hover{
+  color: aquamarine;
+  text-decoration: none;
 }

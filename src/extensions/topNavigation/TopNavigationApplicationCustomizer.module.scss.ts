@@ -1,7 +1,7 @@
 /* tslint:disable */
 require("./TopNavigationApplicationCustomizer.module.css");
 const styles = {
-  app: 'app_0087182a'
+  app: 'app_d3cceee0'
 };
 
 export default styles;
