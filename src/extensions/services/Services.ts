@@ -16,7 +16,7 @@ export class Services {
     };
 
     constructor(private absoluteUrl: string, private client: SPHttpClient){}
-    
+    // get SharePoint navigation items using SPHttpClient 
     public getMenu(): Promise<IMenu[]>{
         let promise: Promise<IMenu[]> = new Promise<IMenu[]>((resolve, reject) =>{
             let query = `${this.absoluteUrl}${API_ENDPOINT}${QUERY}`;
